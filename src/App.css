@@ -7,8 +7,8 @@
 
 /* Global styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0e1438;
+  font-family: Helvetica, Sans-Serif;
+  background-color: #222831;
   color: #fff; /* Setting text color to white for better contrast */
 }
 
@@ -19,7 +19,7 @@ body {
 
 /* Sidebar styles */
 #sidebar {
-  background-color: #1a235a;
+  background-color: #31363F;
   width: 400px;
   padding: 20px;
   position: fixed;
@@ -65,7 +65,12 @@ body {
 }
 
 .user-details {
-  padding: 10px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 15px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -78,6 +83,12 @@ body {
   margin-bottom: 5px;
 }
 
+.userDetailsContent {
+  
+  margin: 10px;
+  
+
+}
 .user-username {
   color: #666;
   margin-bottom: 10px;
@@ -134,7 +145,7 @@ body {
 
 /* Header styles */
 .header {
-  background-color: #1a235a;
+  background-color: #76ABAE;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
