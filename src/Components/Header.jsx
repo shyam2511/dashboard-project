@@ -62,9 +62,9 @@ function Header({ OpenSidebar }) {
           {/* Profile Dropdown */}
           <div className={`profile-dropdown ${showProfileOptions ? 'active' : ''}`}>
             <ul>
-              <li><a href='#'>Profile</a></li>
-              <li><a href='#'>Settings</a></li>
-              <li><a href='#'>Logout</a></li>
+              <li><a href='http://localhost:3000'>Profile</a></li>
+              <li><a href='http://localhost:3000'>Settings</a></li>
+              <li><a href='http://localhost:3000'>Logout</a></li>
             </ul>
           </div>
         </div>

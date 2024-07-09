@@ -67,10 +67,10 @@ body {
 .user-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px;  
   padding: 15px;
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: #EEEEEE;
+  border-radius: 50px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   opacity: 0.75; /* Reduced opacity for user details */
 }
@@ -221,7 +221,7 @@ body {
 /*Footer*/
 
 .footer {
-  background-color: #1a235a;
+  background-color: #0b0c0e;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -251,7 +251,8 @@ body {
 }
 
 .footer-content p {
-  color: red;
+  
+  color: rgba(201, 233, 255, 0.562);
 }
 
 .search-form {
