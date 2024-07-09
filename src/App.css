@@ -9,6 +9,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #0e1438;
+  color: #fff; /* Setting text color to white for better contrast */
 }
 
 .container {
@@ -52,6 +53,7 @@ body {
   flex-direction: column;
   align-items: center; /* Center items horizontally */
   text-align: center; /* Center text within .user-details */
+  color: #333;
 }
 
 .user-photo {
@@ -67,7 +69,7 @@ body {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  opacity: 75%;
+  opacity: 0.75; /* Reduced opacity for user details */
 }
 
 .user-name {
@@ -157,9 +159,47 @@ body {
 }
 
 .header-option span {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .header-option:last-child {
-  margin-left: 20px;
+  margin-left: 30px;
+}
+
+.profile-icon {
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #1a235a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: none; /* Initially hide dropdown */
+  z-index: 1000; /* Ensure dropdown appears above other content */
+}
+
+.profile-dropdown.active {
+  display: block; /* Display dropdown when active */
+}
+
+.profile-dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown ul li {
+  padding: 10px;
+}
+
+.profile-dropdown ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.profile-dropdown ul li a:hover {
+  text-decoration: underline;
 }
