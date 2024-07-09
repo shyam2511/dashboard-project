@@ -1,22 +1,18 @@
-import Header from './Components/Header'
-import Sidebar from './Components/Sidebar'
-import Home from './Components/Home'
-import Footer from './Components/Footer'
-import './App.css'
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Signup from "./pages/SignUp";
+import Signin from "./pages/SignIn";
 
 function App() {
-  
-
   return (
-    <div className='grid-container'>
-      <Header />
-      <Sidebar />
-      <Home />
-      <Footer />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-
-export default App
+export default App;
