@@ -218,3 +218,59 @@ body {
   text-decoration: underline;
 }
 
+/*Footer*/
+
+.footer {
+  background-color: #1a235a;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-content p {
+  color: red;
+}
+
+.search-form {
+  position: relative;
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.search-form input[type="text"] {
+  width: 400px; /* Adjust width as needed */
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333;
+  transition: width 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.search-form input[type="text"]:focus {
+  width: 250px; /* Expand width on focus */
+  border-color: #007bff; /* Change border color on focus */
+}

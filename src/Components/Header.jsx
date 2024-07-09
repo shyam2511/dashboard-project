@@ -1,15 +1,14 @@
+// Header.jsx
+
 import React, { useState } from 'react';
 import {
-  BsFillBellFill,
-  BsFillEnvelopeFill,
-  BsPersonCircle,
   BsSearch,
   BsJustify,
-  BsPeople,
   BsInfoCircle,
+  BsPersonCircle,
 } from 'react-icons/bs';
 
-function Header({ openSidebarToggle, OpenSidebar }) {
+function Header({ OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [showProfileOptions, setShowProfileOptions] = useState(false); // State for profile dropdown
@@ -45,6 +44,7 @@ function Header({ openSidebarToggle, OpenSidebar }) {
               placeholder='Enter the name of user'
               value={searchText}
               onChange={handleInputChange}
+              className='search-input'
             />
           </form>
         ) : (
