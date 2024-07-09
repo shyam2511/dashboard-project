@@ -167,14 +167,14 @@ body {
   margin-left: 20px;
 }
 
-
 .profile-icon {
   position: relative;
+  margin-left: 10px; /* Add margin to the left of the profile icon */
 }
 
 .profile-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px); /* Adjust as needed */
   right: 0;
   background-color: #1a235a;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

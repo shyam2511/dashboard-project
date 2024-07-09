@@ -5,14 +5,26 @@ import {
   BsPersonCircle,
   BsSearch,
   BsJustify,
+  BsPeople,
   BsInfoCircle,
 } from 'react-icons/bs';
 
-function Header({ OpenSidebar }) {
-  const [showProfileOptions, setShowProfileOptions] = useState(false);
+function Header({ openSidebarToggle, OpenSidebar }) {
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
-  const toggleProfileOptions = () => {
-    setShowProfileOptions(!showProfileOptions);
+  const handleSearchClick = () => {
+    setIsSearching(true);
+  };
+
+  const handleInputChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Handle search functionality here with searchText
+    console.log('Searching for:', searchText);
   };
 
   return (
@@ -21,23 +33,27 @@ function Header({ OpenSidebar }) {
         <BsJustify className='icon' onClick={OpenSidebar} />
       </div>
       <div className='header-options'>
-        <div className='header-option'>
-          <BsSearch className='icon' />
-          <span>Search Users</span>
-        </div>
+        {isSearching ? (
+          <form onSubmit={handleSearchSubmit} className='search-form'>
+            <input
+              type='text'
+              placeholder='Enter the name of user'
+              value={searchText}
+              onChange={handleInputChange}
+            />
+          </form>
+        ) : (
+          <div className='header-option' onClick={handleSearchClick}>
+            <BsSearch className='icon' />
+            <span>Search Users</span>
+          </div>
+        )}
         <div className='header-option'>
           <BsInfoCircle className='icon' />
           <span>Contact Us</span>
         </div>
-        <div className='profile-icon' onClick={toggleProfileOptions}>
+        <div className='header-option'>
           <BsPersonCircle className='icon' />
-          <div className={`profile-dropdown ${showProfileOptions ? 'active' : ''}`}>
-            <ul>
-              <li><a href='#'>View Profile</a></li>
-              <li><a href='#'>Edit Profile</a></li>
-              <li><a href='#'>Log Out</a></li>
-            </ul>
-          </div>
         </div>
       </div>
     </header>
