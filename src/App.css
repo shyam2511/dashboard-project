@@ -65,11 +65,9 @@ body {
 }
 
 .user-details {
-  
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   padding: 15px;
   background-color: #fff;
   border-radius: 5px;
@@ -84,11 +82,9 @@ body {
 }
 
 .userDetailsContent {
-  
   margin: 10px;
-  
-
 }
+
 .user-username {
   color: #666;
   margin-bottom: 10px;
@@ -183,11 +179,16 @@ body {
   margin-left: 10px; /* Add margin to the left of the profile icon */
 }
 
+.profile-icon {
+  position: relative;
+  margin-left: 10px; /* Add margin to the left of the profile icon */
+}
+
 .profile-dropdown {
   position: absolute;
   top: calc(100% + 10px); /* Adjust as needed */
   right: 0;
-  background-color: #1a235a;
+  background-color: #1a235a; /* Adjust background color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   display: none; /* Initially hide dropdown */
@@ -216,3 +217,4 @@ body {
 .profile-dropdown ul li a:hover {
   text-decoration: underline;
 }
+

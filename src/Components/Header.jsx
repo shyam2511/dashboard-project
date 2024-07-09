@@ -12,6 +12,7 @@ import {
 function Header({ openSidebarToggle, OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
+  const [showProfileOptions, setShowProfileOptions] = useState(false); // State for profile dropdown
 
   const handleSearchClick = () => {
     setIsSearching(true);
@@ -25,6 +26,10 @@ function Header({ openSidebarToggle, OpenSidebar }) {
     e.preventDefault();
     // Handle search functionality here with searchText
     console.log('Searching for:', searchText);
+  };
+
+  const toggleProfileOptions = () => {
+    setShowProfileOptions(!showProfileOptions);
   };
 
   return (
@@ -52,8 +57,16 @@ function Header({ openSidebarToggle, OpenSidebar }) {
           <BsInfoCircle className='icon' />
           <span>Contact Us</span>
         </div>
-        <div className='header-option'>
-          <BsPersonCircle className='icon' />
+        <div className='header-option profile-icon'>
+          <BsPersonCircle className='icon' onClick={toggleProfileOptions} />
+          {/* Profile Dropdown */}
+          <div className={`profile-dropdown ${showProfileOptions ? 'active' : ''}`}>
+            <ul>
+              <li><a href='#'>Profile</a></li>
+              <li><a href='#'>Settings</a></li>
+              <li><a href='#'>Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
