@@ -163,6 +163,7 @@ body {
   display: flex;
   align-items: center;
   margin-left: 10px; /* Increased margin-left */
+  transition: color 0.3s ease;
 }
 
 .header-option span {
@@ -174,9 +175,9 @@ body {
   margin-left: 20px;
 }
 
-.profile-icon {
-  position: relative;
-  margin-left: 10px; /* Add margin to the left of the profile icon */
+.header-option:hover,
+.header-option:hover .icon {
+  color: #222831; /* Body background color */
 }
 
 .profile-icon {
@@ -188,7 +189,7 @@ body {
   position: absolute;
   top: calc(100% + 10px); /* Adjust as needed */
   right: 0;
-  background-color: #1a235a; /* Adjust background color */
+  background-color: #1a235a;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   display: none; /* Initially hide dropdown */

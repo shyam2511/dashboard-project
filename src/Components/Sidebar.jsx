@@ -14,7 +14,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
     country: 'United States',
     organization: 'Example Corp',
     linkedin: 'https://linkedin.com/johndoe',
-    bio: 'Software Engineer | Open-source enthusiast. CS from XYZ Uni',
+    bio: 'Software Engineer | Open-source enthusiast. CS from BITS PILANI',
     followers: 100,
     following: 50,
   };
