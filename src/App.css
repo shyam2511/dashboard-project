@@ -155,16 +155,18 @@ body {
 .header-option {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 10px; /* Increased margin-left */
 }
 
 .header-option span {
-  margin-left: 10px;
+  /* margin-left: 5px; */
+  margin-right: 40px;
 }
 
 .header-option:last-child {
-  margin-left: 30px;
+  margin-left: 20px;
 }
+
 
 .profile-icon {
   position: relative;
