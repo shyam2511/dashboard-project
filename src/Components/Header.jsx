@@ -1,24 +1,35 @@
-import React from 'react'
-import 
- {BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify}
- from 'react-icons/bs'
+import React from 'react';
+import {
+  BsFillBellFill,
+  BsFillEnvelopeFill,
+  BsPersonCircle,
+  BsSearch,
+  BsJustify,
+  BsPeople,
+  BsInfoCircle,
+} from 'react-icons/bs';
 
-function Header({OpenSidebar}) {
+function Header({ openSidebarToggle, OpenSidebar }) {
   return (
     <header className='header'>
-        <div className='menu-icon'>
-            <BsJustify className='icon' onClick={OpenSidebar}/>
+      <div className='menu-icon'>
+        <BsJustify className='icon' onClick={OpenSidebar} />
+      </div>
+      <div className='header-options'>
+        <div className='header-option'>
+          <BsSearch className='icon' />
+          <span>Search Users</span>
         </div>
-        <div className='header-left'>
-            <BsSearch  className='icon'/>
+        <div className='header-option'>
+          <BsInfoCircle className='icon' />
+          <span>Contact Us</span>
         </div>
-        <div className='header-right'>
-            <BsFillBellFill className='icon'/>
-            <BsFillEnvelopeFill className='icon'/>
-            <BsPersonCircle className='icon'/>
+        <div className='header-option'>
+          <BsPersonCircle className='icon' />
         </div>
+      </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
