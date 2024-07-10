@@ -147,6 +147,7 @@ html, body, .container {
 }
 
 /* Header styles */
+/* Header styles */
 .header {
   background-color: #007bff;
   padding: 10px 20px;
@@ -174,7 +175,6 @@ html, body, .container {
 }
 
 .header-option span {
-  /* margin-left: 5px; */
   margin-right: 40px;
 }
 
@@ -238,6 +238,20 @@ html, body, .container {
   text-decoration: underline;
 }
 
+/* Add this new rule for the hover state of the "Home" button */
+.header-options .home-button {
+  margin-left: 50px; /* Add margin to the left of the search bar */
+  cursor: pointer;
+  padding: 10px 20px; /* Optional: Add padding for better click area */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+  transition: background-color 0.3s ease; /* Optional: Add transition for smooth hover effect */
+}
+
+.header-options .home-button:hover {
+  color: #222831; /*rgb(14, 14, 14) to your desired hover background color */
+}
+
+
 /* Footer */
 
 .footer {
@@ -295,6 +309,10 @@ html, body, .container {
   border-color: #007bff; /* Change border color on focus */
 }
 
+search-bar{
+
+}
+
 .homepageContainer {
   background-color: #e5f1d5;
   padding: 100px;
@@ -341,20 +359,4 @@ html, body, .container {
 .main-content {
   margin-left: 400px; /* Ensure this matches sidebar width */
   width: calc(100% - 400px); /* Adjust width to fill remaining space */
-}
-
-.search-res-container {
-  position: absolute;
-  top: calc(10% + 10px); /* Adjust as needed */
-  background-color: #1a235a;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  z-index: 1000; /* Ensure dropdown appears above other content */
-  display: flex;
-}
-.search-res {
-  position: relative;
-  contain: flex;
-  flex-direction: column;
-  padding: 5px;
 }
