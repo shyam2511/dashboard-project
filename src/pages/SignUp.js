@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
+import "../Pages.css"; // Importing the CSS file
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +47,6 @@ const SignUp = () => {
     try {
       let filenames = null;
       if (photo) {
-        console.log(photo[0]);
         if (photo[0].type !== "image/jpeg") {
           setError("Only .jpg profile pictures are allowed.");
           return;
@@ -66,70 +66,66 @@ const SignUp = () => {
           profileImg: filenames,
         }
       );
-      console.log(responseData);
-      // dispatch(register(responseData));
       navigate("/signin");
     } catch (error) {
       setError(error.message);
-      console.error(error);
     }
   };
 
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <h3>Sign Up</h3>
-          {error && <p>{error}</p>}
-          <div>
-            <label>Email address</label>
-            <input type="email" name="email" onChange={handleState} />
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <h3>Sign Up</h3>
+        {error && <p className="error-message">{error}</p>}
+        <div>
+          <label>Email address</label>
+          <input type="email" name="email" onChange={handleState} />
+        </div>
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" onChange={handleState} />
+        </div>
+        <div>
+          <label>Upload Photo</label>
+          <input type="file" id="photo" onChange={onChangeHandler} />
+          {displayedImages.length > 0 ? (
+            <img
+              src={displayedImages[0].url}
+              alt="Selected"
+              className="profile-image"
+              onClick={() => document.getElementById("photo").click()}
+            />
+          ) : (
+            <label htmlFor="photo" className="cursor-pointer">
+              <img src={avatarUrl} alt="Avatar" className="profile-image" />
+            </label>
+          )}
+        </div>
+        <div>
+          <label>Password</label>
+          <div className="password-container">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              onChange={handleState}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setShowPassword((prevState) => !prevState);
+              }}
+            >
+              {showPassword ? <AiFillEye /> : <FaEyeSlash />}
+            </button>
           </div>
-          <div>
-            <label>Name</label>
-            <input type="text" name="name" onChange={handleState} />
-          </div>
-          <div>
-            <label>Upload Photo</label>
-            <input type="file" id="photo" onChange={onChangeHandler} />
-            {displayedImages.length > 0 ? (
-              <img
-                src={displayedImages[0].url}
-                alt="Selected"
-                onClick={() => document.getElementById("photo").click()}
-              />
-            ) : (
-              <label htmlFor="photo" className="cursor-pointer">
-                <img src={avatarUrl} alt="Avatar" />
-              </label>
-            )}
-          </div>
-          <div>
-            <label>Password</label>
-            <div>
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                onChange={handleState}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  setShowPassword((prevState) => !prevState);
-                }}
-              >
-                {showPassword ? <AiFillEye /> : <FaEyeSlash />}
-              </button>
-            </div>
-          </div>
-          <button type="submit">Signup</button>
-          <div>
-            <p>
-              <Link to="/signin">Already a user? Login</Link>
-            </p>
-          </div>
-        </form>
-      </div>
+        </div>
+        <button type="submit">Sign Up</button>
+        <div className="links">
+          <p>
+            <Link to="/signin">Already a user? Login</Link>
+          </p>
+        </div>
+      </form>
     </div>
   );
 };

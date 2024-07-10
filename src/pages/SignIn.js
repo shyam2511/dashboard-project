@@ -1,9 +1,10 @@
-/* eslint-disable */
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
 import axios from "axios";
+import "../Pages.css";  // Importing the CSS file
+
 const SignIn = () => {
   const navigate = useNavigate();
 
@@ -34,51 +35,39 @@ const SignIn = () => {
   };
 
   return (
-      <div>
+      <div className="container">
         <div>
-          <form
-            onSubmit={handleLogin}
-          >
-            <h3 >Sign In</h3>
-            {errorMessage && (
-              <p >{errorMessage}</p>
-            )}
+          <form onSubmit={handleLogin}>
+            <h3>Sign In</h3>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div>
-              <label>
-                Email address
-              </label>
+              <label>Email address</label>
               <input
                 type="email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div >
-              <label>
-                Password
-              </label>
-              <div >
+            <div>
+              <label>Password</label>
+              <div className="password-container">
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
+                  type="button"
                   onClick={() => {
                     setShowPassword((prevState) => !prevState);
                   }}
-                  
                 >
                   {showPassword ? <AiFillEye /> : <FaEyeSlash />}
                 </button>
               </div>
             </div>
-            <button
-              type="submit"
-              >
-              Sign In
-            </button>
-            <div>
+            <button type="submit">Sign In</button>
+            <div className="links">
               <p>
                 <Link to="/signup">Sign Up</Link>
               </p>
@@ -88,7 +77,6 @@ const SignIn = () => {
             </div>
           </form>
         </div>
-        
       </div>
   );
 };
