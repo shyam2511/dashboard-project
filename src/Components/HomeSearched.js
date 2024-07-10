@@ -35,9 +35,14 @@ const HomeSearched = ({ userId }) => {
   }, [userId]);
 
   useEffect(() => {
+    console.log(user.platforms.codeforces)
     if (user && user.platforms.leetcode) {
       fetchLeetcode(user.platforms.leetcode);
+    }
+    if (user && user.platforms.codechef) {
       fetchCodechef(user.platforms.codechef);
+    }
+    if (user && user.platforms.codeforces) {
       fetchCodeforces(user.platforms.codeforces);
     }
   }, [user]);
@@ -101,7 +106,7 @@ const HomeSearched = ({ userId }) => {
 
   return (
     <div className="main-content">
-      <h1>Home</h1>
+      <h1>{user.name}'s Profile</h1>
       {(leetcodeData|| codechefData ||
       codeforcesData) ? (
         <div className="scores-list">
