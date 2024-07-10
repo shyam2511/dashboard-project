@@ -68,7 +68,7 @@ const Home = () => {
   return (
     <div className="main-content">
       <h1>Home</h1>
-      { (platforms) ? (
+      {platforms ? (
         <div className="scores-list">
           <div className="doughnut-container">
             {<Doughnut data={leetcodeDataChart} />}
@@ -92,13 +92,10 @@ const Home = () => {
               <b>Title: </b> {codeforcesData.rank}/{codeforcesData.maxRank}
             </span>
           </div>
-        </div>)
-        :(
-          <div>
-            No handles added
-          </div>
-        )
-      }
+        </div>
+      ) : (
+        <div>No handles added</div>
+      )}
     </div>
   );
 };
