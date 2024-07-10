@@ -4,13 +4,12 @@ import {
   BsSearch,
   BsJustify,
   BsInfoCircle,
-
-} from 'react-icons/bs';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { logout } from '../redux/authSlice';
-import { imageDb } from '../firebase/Firebase';
-import { getDownloadURL, ref } from 'firebase/storage';
+} from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../redux/authSlice";
+import { imageDb } from "../firebase/Firebase";
+import { getDownloadURL, ref } from "firebase/storage";
 function Header({ OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -18,9 +17,9 @@ function Header({ OpenSidebar }) {
   const searchFormRef = useRef(null); // Reference for the search form
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user} = useSelector((state)=>(state.auth));
+  const { user } = useSelector((state) => state.auth);
   const [profileImgSrc, setProfileImgSrc] = useState("");
-  
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
@@ -60,13 +59,13 @@ function Header({ OpenSidebar }) {
     };
   }, [searchFormRef]);
   console.log(user);
-  useEffect(()=>{
-    const getProfileImg=async()=>{
+  useEffect(() => {
+    const getProfileImg = async () => {
       const storageRef = ref(imageDb, `images/${user.profileImg}`);
       setProfileImgSrc(await getDownloadURL(storageRef));
-    }
+    };
     getProfileImg();
-  },[user])
+  }, [user]);
   return (
     <header className="header">
       <div className="menu-icon">
@@ -98,25 +97,20 @@ function Header({ OpenSidebar }) {
           <span>Contact Us</span>
         </div>
         <div className="header-option profile-icon">
-
-          <img
-            className="icon"
-            src={profileImgSrc}
-            onClick={toggleProfileOptions}
-          />
+          <div onClick={toggleProfileOptions}>
+            <img className="icon-pp" src={profileImgSrc} />
+          </div>
 
           {/* Profile Dropdown */}
           <div
             className={`profile-dropdown ${showProfileOptions ? "active" : ""}`}
           >
             <ul>
-
               <li
                 onClick={() => {
                   navigate("/profile");
                 }}
               >
-
                 <a href="#">Profile</a>
               </li>
               <li>

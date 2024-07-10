@@ -174,7 +174,16 @@ body {
 .header-option:last-child {
   margin-left: 20px;
 }
-
+.icon-pp {
+  border-color: #0a0a0a;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 100%;
+  height: auto;
+  width: auto;
+  max-width: 30px;
+  max-height: 30px;
+}
 .header-option:hover,
 .header-option:hover .icon {
   color: #222831; /* Body background color */
