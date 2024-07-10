@@ -21,6 +21,8 @@ function App() {
             <Route path="/dashboard" element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>
       </PersistGate>
