@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Contributors
 
 
-### Dhruv Agarwal
-### Shyam N V
-### Yash Kadam
-### Sayan Samanta
++ Dhruv Agarwal
++ Shyam N V
++ Yash Kadam
++ Sayan Samanta
