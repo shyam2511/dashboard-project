@@ -12,6 +12,11 @@ body {
   color: #fff; /* Setting text color to white for better contrast */
 }
 
+html, body, .container {
+  height: 100%;
+  background-color: #1d1d1d; /* Ensure the entire background is black */
+}
+
 .container {
   display: flex;
   min-height: 100vh;
@@ -65,7 +70,6 @@ body {
   margin-left: -5px;
 }
 
-
 .user-details {
   display: flex;
   flex-direction: column;
@@ -113,7 +117,8 @@ body {
 
 /* Main content area */
 .main-content {
-  margin-left: 250px; /* Adjust based on sidebar width */
+  margin-left: 400px; /* Ensure this matches sidebar width */
+  width: calc(100% - 400px); /* Adjust width to fill remaining space */
   padding: 20px;
 }
 
@@ -176,6 +181,7 @@ body {
 .header-option:last-child {
   margin-left: 20px;
 }
+
 .icon-pp {
   border-color: #0a0a0a;
   border-style: solid;
@@ -187,6 +193,7 @@ body {
   max-height: 30px;
   margin-left: -10px;
 }
+
 .header-option:hover,
 .header-option:hover .icon {
   color: #222831; /* Body background color */
@@ -231,7 +238,7 @@ body {
   text-decoration: underline;
 }
 
-/*Footer*/
+/* Footer */
 
 .footer {
   background-color: #0b0c0e;
@@ -290,7 +297,6 @@ body {
 
 .homepageContainer {
   background-color: #e5f1d5;
-
   padding: 100px;
   border-radius: 5%;
   width: fit-content;
@@ -299,15 +305,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .homepage-btn-container {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
+
 .homepage-button {
   margin: 10px;
   padding: 15px;
 }
+
 .center {
   margin: 0;
   position: absolute;
@@ -316,6 +325,7 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 .icon-pp-signup {
   border-color: #0a0a0a;
   border-style: solid;
