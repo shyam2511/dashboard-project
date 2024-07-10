@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 
@@ -9,9 +8,10 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 const HomeSearched = ({ userId }) => {
   const [user, setUser] = useState(null);
-  const [leetcodeData, setLeetcodeData] = useState([]);
-  const [codechefData, setCodechefData] = useState([]);
-  const [codeforcesData, setCodeforcesData] = useState([]);
+  const [leetcodeData, setLeetcodeData] = useState({});
+  const [codechefData, setCodechefData] = useState({});
+  const [codeforcesData, setCodeforcesData] = useState({});
+
   useEffect(() => {
     const options = {
       headers: {
@@ -30,38 +30,52 @@ const HomeSearched = ({ userId }) => {
         console.error("Error fetching user details:", error);
       }
     };
+
     getUserDetails();
   }, [userId]);
 
   useEffect(() => {
-    if (user && user.platforms) {
-      fetchPlatformData(user.platforms);
+    if (user && user.platforms.leetcode) {
+      fetchLeetcode(user.platforms.leetcode);
+      fetchCodechef(user.platforms.codechef);
+      fetchCodeforces(user.platforms.codeforces);
     }
   }, [user]);
-
-  const fetchPlatformData = async (platforms) => {
+  const fetchLeetcode = async(platform)=>{
     try {
-      const codechefResponse = await axios.get(
-        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codechef/fetch-details?username=${platforms.codechef}`
+      const response = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/leetcode/fetch-details?username=${platform.leetcode}`
       );
-      const codeforcesResponse = await axios.get(
-        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codeforces/fetch-details?username=${platforms.codeforces}`
-      );
-      const leetcodeResponse = await axios.get(
-        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/leetcode/fetch-details?username=${platforms.leetcode}`
-      );
-
-      if (codechefResponse.data) {
-        setCodechefData(codechefResponse.data.codechef);
-      }
-      if (leetcodeResponse.data) {
-        setLeetcodeData(leetcodeResponse.data.leetcode);
-      }
-      if (codeforcesResponse.data) {
-        setCodeforcesData(codeforcesResponse.data.codeforces);
+      if (response.data) {
+        setLeetcodeData(response.data.leetcode);
       }
     } catch (error) {
-      console.error("Error fetching platform data", error);
+       console.error("Error fetching Leetcode data", error);
+    }
+    
+  }
+  const fetchCodechef = async (platform) => {
+    try {
+      const response = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codechef/fetch-details?username=${platform.codechef}`
+      );
+      if (response.data) {
+        setCodechefData(response.data.codechef);
+      }
+    } catch (error) {
+      console.error("Error fetching Codechef data", error);
+    }
+  };
+  const fetchCodeforces = async (platform) => {
+    try {
+      const response = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codeforces/fetch-details?username=${platform.codeforces}`
+      );
+      if (response.data) {
+        setCodeforcesData(response.data.codeforces);
+      }
+    } catch (error) {
+      console.error("Error fetching Codeforces data", error);
     }
   };
 
@@ -88,37 +102,44 @@ const HomeSearched = ({ userId }) => {
   return (
     <div className="main-content">
       <h1>Home</h1>
-      <div className="scores-list">
-        {/* <Doughnut data={leetcodeDataChart} /> */}
-        <div>
-          <span>
-            {codechefData.currentRating ? (
-              <>
-                Codechef Rating: {codechefData.currentRating}/
-                {codechefData.highestRating}
-              </>
-            ) : null}
-          </span>
-          <span>{codechefData.stars ? `Stars: ${codechefData.stars}` : null}</span>
+      {(leetcodeData|| codechefData ||
+      codeforcesData) ? (
+        <div className="scores-list">
+          <Doughnut data={leetcodeDataChart} />
+          <div>
+            <span>
+              {codechefData ? (
+                <>
+                  Codechef Rating: {codechefData.currentRating}/
+                  {codechefData.highestRating}
+                </>
+              ) : null}
+            </span>
+            <span>
+              {codechefData ? `Stars: ${codechefData.stars}` : null}
+            </span>
+          </div>
+          <div>
+            <span>
+              {codeforcesData ? (
+                <>
+                  Codeforces Rating: {codeforcesData.rating}/
+                  {codeforcesData.maxRating}
+                </>
+              ) : null}
+            </span>
+            <span>
+              {codeforcesData ? (
+                <>
+                  Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+                </>
+              ) : null}
+            </span>
+          </div>
         </div>
-        <div>
-          <span>
-            {codeforcesData.rating ? (
-              <>
-                Codeforces Rating: {codeforcesData.rating}/
-                {codeforcesData.maxRating}
-              </>
-            ) : null}
-          </span>
-          <span>
-            {codeforcesData.rank ? (
-              <>
-                Title: {codeforcesData.rank}/{codeforcesData.maxRank}
-              </>
-            ) : null}
-          </span>
-        </div>
-      </div>
+      ) : (
+        <div>Not visible</div>
+      )}
     </div>
   );
 };
