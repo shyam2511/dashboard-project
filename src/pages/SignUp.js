@@ -109,6 +109,7 @@ const SignUp = () => {
             </label>
           )}
         </div>
+        <br></br>
         <div>
           <label>Password</label>
           <div className="password-toggle">
