@@ -68,7 +68,7 @@ const SignUp = () => {
           profileImg: filenames,
         }
       );
-      dispatch(register(responseData));
+      dispatch(register(responseData.data));
       navigate("/signin");
     } catch (error) {
       setError(error.message);

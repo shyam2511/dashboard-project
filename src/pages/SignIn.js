@@ -29,7 +29,7 @@ const SignIn = () => {
         },
         options
       );
-      dispatch(login(response));
+      dispatch(login(response.data));
       navigate("/dashboard");
     } catch (error) {
       setErrorMessage("Invalid email or password");
