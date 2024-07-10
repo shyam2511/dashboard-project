@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/ForgotPassword.css';
@@ -20,18 +19,24 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgot-password-container">
-      <div className="forgot-password-form">
-        <h2>Forgot Password</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="email-input"
-          />
-          <button type="submit" className="reset-button">Send Reset Link</button>
+      <div className="forgot-password-box">
+        <h1>Forgot Password</h1>
+        <form onSubmit={handleSubmit} className="forgot-password-form">
+          <div className="email-input-container">
+            <label>
+              Email:
+              <div className="email-input-wrapper">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="email-input"
+                />
+              </div>
+            </label>
+          </div>
+          <button type="submit">Send Reset Link</button>
         </form>
         {message && <p className="message">{message}</p>}
       </div>
