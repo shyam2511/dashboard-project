@@ -4,7 +4,8 @@ import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
 import axios from "axios";
 import '../Pages.css'; // Import the SignIn CSS
-
+import {useDispatch} from "react-redux";
+import {login} from "../redux/authSlice"
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

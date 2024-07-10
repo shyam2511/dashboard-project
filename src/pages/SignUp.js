@@ -6,7 +6,8 @@ import axios from "axios";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
 import '../Pages.css'; // Import the SignUp CSS
-
+import {register} from "../redux/authSlice"
+import {useDispatch} from "react-redux";
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [state, setState] = useState({});
@@ -15,7 +16,7 @@ const SignUp = () => {
   const [displayedImages, setDisplayedImages] = useState([]);
   const [avatarUrl, setAvatarUrl] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchAvatarUrl = async () => {
       try {
