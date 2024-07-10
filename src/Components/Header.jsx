@@ -39,6 +39,7 @@ function Header({ OpenSidebar }) {
         <BsJustify className="icon" onClick={OpenSidebar} />
       </div>
       <div className="header-options">
+        <span onClick={()=>{navigate("/dashboard")}}>Home</span>
         <SearchBar setResults={setResults}/>
         {results.length>0 && <SearchResultsList results={results}/>}
         <div className="header-option">

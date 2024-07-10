@@ -10,6 +10,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
 import PrivateRoute from "./Components/PrivateRoute";
 import Profile from "./pages/Profile";
+import UserVisitProfile from "./pages/UserVisitProfile";
 function App() {
   return (
     <Provider store={store}>
@@ -27,6 +28,7 @@ function App() {
               path="/resetpassword/:id/:token"
               element={<ResetPassword />}
             />
+            <Route path="/search/:userId" element={<UserVisitProfile />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
