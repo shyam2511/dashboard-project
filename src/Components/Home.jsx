@@ -75,18 +75,21 @@ const Home = () => {
           </div>
           <div>
             <span>
-              Codechef Rating:
+              <b>Codechef Rating: </b>
               {codechefData.currentRating}/{codechefData.highestRating}
             </span>
-            <span>Stars: {codechefData.stars}</span>
+            <br />
+            <span><b>Stars: </b> {codechefData.stars}</span>
           </div>
+          <br />
           <div>
             <span>
-              Codeforces Rating:
+              <b>Codeforces Rating: </b>
               {codeforcesData.rating}/{codeforcesData.maxRating}
             </span>
+            <br />
             <span>
-              Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+              <b>Title: </b> {codeforcesData.rank}/{codeforcesData.maxRank}
             </span>
           </div>
         </div>
