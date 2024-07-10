@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Signup from "./pages/SignUp";
 import Signin from "./pages/SignIn";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Homepage from "./pages/Homepage";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -23,6 +25,7 @@ function App() {
         </BrowserRouter>
       </PersistGate>
     </Provider>
+
   );
 }
 
