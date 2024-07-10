@@ -25,7 +25,6 @@ function App() {
         </BrowserRouter>
       </PersistGate>
     </Provider>
-
   );
 }
 

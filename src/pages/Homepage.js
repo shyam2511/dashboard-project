@@ -1,29 +1,33 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
-    <div>
-      <h1>Coders Dashboard</h1>
-      <div>
-        <button
-          onClick={() => {
-            navigate("/signin");
-          }}
-        >
-          Signin
-        </button>
-        <button
-          onClick={() => {
-            navigate("/signup");
-          }}
-        >
-          Signup
-        </button>
+    <>
+      <div className="homepageContainer center" style={{}}>
+        <h1>Coder Dashboard</h1>
+        <div className="homepage-btn-container">
+          <button
+            className="homepage-button"
+            onClick={() => {
+              navigate("/signin");
+            }}
+          >
+            Login
+          </button>
+          <button
+            className="homepage-button"
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            Signup
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
-}
+};
 
-export default Homepage
+export default Homepage;
