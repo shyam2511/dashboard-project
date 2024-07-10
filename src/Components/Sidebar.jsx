@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import userPhoto from "./assets/user.jpg"; // Assuming you have a user photo stored in assets
+import { ref, getDownloadURL } from "firebase/storage";
+import { imageDb } from "../firebase/Firebase";
 
 const linkedin = (
   <svg
@@ -17,8 +18,21 @@ const linkedin = (
 
 function Sidebar() {
   const user = useSelector((state) => state.auth.user);
-
-  if (!user) return null;
+  const [profileImgSrc, setProfileImgSrc] = useState("");
+  useEffect(() => {
+    if (user) {
+      const getProfileImg = async () => {
+        const storageRef = ref(imageDb, `images/${user.profileImg}`);
+        try {
+          const url = await getDownloadURL(storageRef);
+          setProfileImgSrc(url);
+        } catch (error) {
+          console.error("Error fetching profile image:", error);
+        }
+      };
+      getProfileImg();
+    }
+  }, [user]);
 
   return (
     <aside id="sidebar" className="sidebar-responsive">
@@ -28,7 +42,7 @@ function Sidebar() {
       <div className="user-info">
         <div className="user-details">
           <div className="userDetailsContent">
-            <img src={userPhoto} alt="User" className="user-photo" />
+            <img src={profileImgSrc} alt="User" className="user-photo" />
           </div>
           <div className="userDetailsContent user-name">
             {user.name} | @{user.username}
@@ -51,8 +65,6 @@ function Sidebar() {
               </a>
             </div>
           )}
-          <div className="userDetailsContent">Followers: {user.followers}</div>
-          <div className="userDetailsContent">Following: {user.following}</div>
         </div>
       </div>
     </aside>

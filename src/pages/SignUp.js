@@ -83,7 +83,6 @@ const SignUp = () => {
       } else {
         return;
       }
-
       const responseData = await axios.post(
         `https://coders-dashboard-4cdb4394fb85.herokuapp.com/auth/register`,
         {

@@ -28,10 +28,12 @@ export const authSlice = createSlice({
       state.isAuthenticated = false;
       localStorage.clear();
     },
+    updateUser(state, action) {
+      state.user = action.payload;
+    },
   },
 });
 
-export const { login, register, logout } =
-  authSlice.actions;
+export const { login, register, logout, updateUser } = authSlice.actions;
 
 export default authSlice.reducer;

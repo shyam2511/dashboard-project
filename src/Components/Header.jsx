@@ -1,65 +1,30 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  BsPersonCircle,
-  BsSearch,
-  BsJustify,
-  BsInfoCircle,
-} from "react-icons/bs";
+// Header.js
+import React, { useState, useEffect } from "react";
+import { BsPersonCircle, BsJustify, BsInfoCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/authSlice";
 import { imageDb } from "../firebase/Firebase";
 import { getDownloadURL, ref } from "firebase/storage";
+import SearchBar from "./SearchBar";
+import SearchResultsList from "./SearchResultsList";
 
 function Header({ OpenSidebar }) {
-  const [isSearching, setIsSearching] = useState(false);
-  const [searchText, setSearchText] = useState("");
   const [showProfileOptions, setShowProfileOptions] = useState(false);
-  const searchFormRef = useRef(null); // Reference for the search form
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [profileImgSrc, setProfileImgSrc] = useState("");
-
+  const [results,setResults] = useState([]);
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
-  };
-  const handleSearchClick = () => {
-    setIsSearching(true);
-  };
-
-  const handleInputChange = (e) => {
-    setSearchText(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log("Searching for:", searchText);
   };
 
   const toggleProfileOptions = () => {
     setShowProfileOptions(!showProfileOptions);
   };
 
-  // Close search bar when clicking outside of it
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        searchFormRef.current &&
-        !searchFormRef.current.contains(event.target)
-      ) {
-        setIsSearching(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [searchFormRef]);
-  console.log(user);
   useEffect(() => {
     const getProfileImg = async () => {
       const storageRef = ref(imageDb, `images/${user.profileImg}`);
@@ -67,32 +32,15 @@ function Header({ OpenSidebar }) {
     };
     getProfileImg();
   }, [user]);
+
   return (
     <header className="header">
       <div className="menu-icon">
         <BsJustify className="icon" onClick={OpenSidebar} />
       </div>
       <div className="header-options">
-        {isSearching ? (
-          <form
-            onSubmit={handleSearchSubmit}
-            className="search-form"
-            ref={searchFormRef}
-          >
-            <input
-              type="text"
-              placeholder="Enter the name of user"
-              value={searchText}
-              onChange={handleInputChange}
-              className="search-input"
-            />
-          </form>
-        ) : (
-          <div className="header-option" onClick={handleSearchClick}>
-            <BsSearch className="icon" />
-            <span>Search Users</span>
-          </div>
-        )}
+        <SearchBar setResults={setResults}/>
+        {results.length>0 && <SearchResultsList results={results}/>}
         <div className="header-option">
           <BsInfoCircle className="icon" />
           <span>Contact Us</span>
@@ -102,7 +50,6 @@ function Header({ OpenSidebar }) {
             <img className="icon-pp" src={profileImgSrc} />
           </div>
 
-          {/* Profile Dropdown */}
           <div
             className={`profile-dropdown ${showProfileOptions ? "active" : ""}`}
           >
