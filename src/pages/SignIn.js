@@ -4,10 +4,12 @@ import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
 import axios from "axios";
 import "../Pages.css";  // Importing the CSS file
+import { useDispatch } from "react-redux";
+import { login } from "../redux/authSlice";
 
 const SignIn = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -27,6 +29,7 @@ const SignIn = () => {
         },
         options
       );
+      dispatch(login(response));
       navigate("/dashboard");
     } catch (error) {
       setErrorMessage("Invalid email or password");

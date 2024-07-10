@@ -8,13 +8,20 @@ import {
   BsPeople,
   BsInfoCircle,
 } from 'react-icons/bs';
-
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../redux/authSlice';
 function Header({ OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [showProfileOptions, setShowProfileOptions] = useState(false);
   const searchFormRef = useRef(null); // Reference for the search form
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
   const handleSearchClick = () => {
     setIsSearching(true);
   };
@@ -80,7 +87,7 @@ function Header({ OpenSidebar }) {
             <ul>
               <li><a href='#'>Profile</a></li>
               <li><a href='#'>Settings</a></li>
-              <li><a href='#'>Logout</a></li>
+              <li onClick={()=>{handleLogout()}}><a href='#'>Logout</a></li>
             </ul>
           </div>
         </div>
