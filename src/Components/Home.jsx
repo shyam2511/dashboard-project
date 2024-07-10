@@ -68,28 +68,34 @@ const Home = () => {
   return (
     <div className="main-content">
       <h1>Home</h1>
-
-      <div className="scores-list">
-        <div className="doughnut-container">
-          {<Doughnut data={leetcodeDataChart} />}
-        </div>
-        <div>
-          <span>
-            Codechef Rating:
-            {codechefData.currentRating}/{codechefData.highestRating}
-          </span>
-          <span>Stars: {codechefData.stars}</span>
-        </div>
-        <div>
-          <span>
-            Codeforces Rating:
-            {codeforcesData.rating}/{codeforcesData.maxRating}
-          </span>
-          <span>
-            Title: {codeforcesData.rank}/{codeforcesData.maxRank}
-          </span>
-        </div>
-      </div>
+      { (platforms) ? (
+        <div className="scores-list">
+          <div className="doughnut-container">
+            {<Doughnut data={leetcodeDataChart} />}
+          </div>
+          <div>
+            <span>
+              Codechef Rating:
+              {codechefData.currentRating}/{codechefData.highestRating}
+            </span>
+            <span>Stars: {codechefData.stars}</span>
+          </div>
+          <div>
+            <span>
+              Codeforces Rating:
+              {codeforcesData.rating}/{codeforcesData.maxRating}
+            </span>
+            <span>
+              Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+            </span>
+          </div>
+        </div>)
+        :(
+          <div>
+            No handles added
+          </div>
+        )
+      }
     </div>
   );
 };
