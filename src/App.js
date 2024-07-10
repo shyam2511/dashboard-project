@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
 import PrivateRoute from "./Components/PrivateRoute";
+import Profile from "./pages/Profile";
 function App() {
   return (
     <Provider store={store}>
@@ -21,6 +22,7 @@ function App() {
             <Route path="/dashboard" element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
+            <Route path="/profile" element={<Profile/>}/>
           </Routes>
         </BrowserRouter>
       </PersistGate>
