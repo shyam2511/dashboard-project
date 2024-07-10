@@ -13,8 +13,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Description
 Coder Dashboard is a web application designed to help developers keep track of their coding profiles across various platforms. Users can view their statistics from platforms like LeetCode, CodeChef, and Codeforces, all in one place.
