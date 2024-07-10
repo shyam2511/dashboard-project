@@ -22,9 +22,12 @@ function App() {
             <Route path="/dashboard" element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
-
-            <Route path="/profile" element={<Profile/>}/>
-
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route
+              path="/resetpassword/:id/:token"
+              element={<ResetPassword />}
+            />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </PersistGate>

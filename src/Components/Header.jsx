@@ -4,12 +4,23 @@ import {
   BsSearch,
   BsJustify,
   BsInfoCircle,
+<<<<<<< HEAD
 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/authSlice";
 import { imageDb } from "../firebase/Firebase";
 import { getDownloadURL, ref } from "firebase/storage";
+=======
+
+} from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../redux/authSlice';
+import { imageDb } from '../firebase/Firebase';
+import { getDownloadURL, ref } from 'firebase/storage';
+
+>>>>>>> 0b7d3f0e999fca9181e78db75befe8c18962641a
 function Header({ OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState("");
