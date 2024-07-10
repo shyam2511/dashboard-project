@@ -65,6 +65,7 @@ body {
   margin-left: -5px;
 }
 
+
 .user-details {
   display: flex;
   flex-direction: column;
@@ -112,9 +113,8 @@ body {
 
 /* Main content area */
 .main-content {
-  margin-left: 400px; /* Adjust based on sidebar width */
+  margin-left: 250px; /* Adjust based on sidebar width */
   padding: 20px;
-  width: calc(100% - 400px); /* Adjust width to fill remaining space */
 }
 
 /* Sidebar list styles */
@@ -176,7 +176,6 @@ body {
 .header-option:last-child {
   margin-left: 20px;
 }
-
 .icon-pp {
   border-color: #0a0a0a;
   border-style: solid;
@@ -188,7 +187,6 @@ body {
   max-height: 30px;
   margin-left: -10px;
 }
-
 .header-option:hover,
 .header-option:hover .icon {
   color: #222831; /* Body background color */
@@ -292,6 +290,7 @@ body {
 
 .homepageContainer {
   background-color: #e5f1d5;
+
   padding: 100px;
   border-radius: 5%;
   width: fit-content;
@@ -300,18 +299,15 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .homepage-btn-container {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
-
 .homepage-button {
   margin: 10px;
   padding: 15px;
 }
-
 .center {
   margin: 0;
   position: absolute;
@@ -320,7 +316,6 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
 .icon-pp-signup {
   border-color: #0a0a0a;
   border-style: solid;
