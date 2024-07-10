@@ -88,27 +88,33 @@ const HomeSearched = ({ user }) => {
           <div className="doughnut-container">
             {<Doughnut data={leetcodeDataChart} />}
           </div>
-          <div>
-            <span>
-              <b>Codeforces Rating: </b>
-              {codeforcesData.rating}/{codeforcesData.maxRating}
-            </span>
-            <br />
-            <span>
-              <b>Title: </b> {codeforcesData.rank}/{codeforcesData.maxRank}
-            </span>
-          </div>
+          {codeforcesData.rating ? (
+            <div>
+              <span>
+                <b>Codeforces Rating: </b>
+                {codeforcesData.rating}/{codeforcesData.maxRating}
+              </span>
+              <br />
+              <span>
+                <b>Title: </b> {codeforcesData.rank}/{codeforcesData.maxRank}
+              </span>
+            </div>
+          ) : (
+            <div>No data for codeforces</div>
+          )}
           <br />
-          <div>
-            <span>
-              <b>Codechef Rating: </b>
-              {codechefData.currentRating}/{codechefData.highestRating}
-            </span>
-            <br />
-            <span>
-              <b>Stars: </b> {codechefData.stars}
-            </span>
-          </div>
+          {
+            codechefData.currentRating?(<div>
+              <span>
+                <b>Codechef Rating: </b>
+                {codechefData.currentRating}/{codechefData.highestRating}
+              </span>
+              <br />
+              <span>
+                <b>Stars: </b> {codechefData.stars}
+              </span>
+            </div>):(<div>No data for codechef</div>)
+          }
         </div>
       ) : (
         <div>Not visible</div>
