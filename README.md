@@ -1,6 +1,11 @@
 # Coder Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It was created for the Nielsen Bootcamp by Dhruv Agarwal, Shyam N V, Yash Kadam, and Sayan Samanta.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It was created for the Nielsen Bootcamp by: 
+
++ Dhruv Agarwal 
++ Shyam N V
++ Yash Kadam 
++ Sayan Samanta.
 
 ## Table of Contents
 - [Description](#description)
