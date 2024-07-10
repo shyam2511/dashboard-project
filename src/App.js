@@ -6,7 +6,7 @@ import Homepage from "./pages/Homepage";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
-
+import PrivateRoute from "./Components/PrivateRoute";
 function App() {
   return (
     <Provider store={store}>
@@ -16,7 +16,9 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signin" element={<Signin />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<PrivateRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </PersistGate>
