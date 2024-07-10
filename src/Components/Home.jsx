@@ -66,7 +66,7 @@ const Home = () => {
   return (
     <div className="main-content">
       <h1>Home</h1>
-      <div className="scores-list">
+      <div className="doughnut-container">
         <Doughnut data={leetcodeDataChart} />
       </div>
     </div>

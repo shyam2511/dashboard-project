@@ -12,7 +12,9 @@ body {
   color: #fff; /* Setting text color to white for better contrast */
 }
 
-html, body, .container {
+html,
+body,
+.container {
   height: 100%;
   background-color: #1d1d1d; /* Ensure the entire background is black */
 }
@@ -251,7 +253,6 @@ html, body, .container {
   color: #222831; /*rgb(14, 14, 14) to your desired hover background color */
 }
 
-
 /* Footer */
 
 .footer {
@@ -309,10 +310,6 @@ html, body, .container {
   border-color: #007bff; /* Change border color on focus */
 }
 
-search-bar{
-
-}
-
 .homepageContainer {
   background-color: #e5f1d5;
   padding: 100px;
@@ -359,4 +356,8 @@ search-bar{
 .main-content {
   margin-left: 400px; /* Ensure this matches sidebar width */
   width: calc(100% - 400px); /* Adjust width to fill remaining space */
+}
+
+.doughnut-container {
+  width: 500px;
 }
