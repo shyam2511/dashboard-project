@@ -261,7 +261,8 @@ body,
   /* Align it to the right side of the header */
   width: 250px;
   /* Adjust width as needed */
-  background-color: #222831;
+  
+  background-color: #3a485e;
   /* Match the dark background of the dashboard */
   border: 1px solid #444;
   /* Subtle border */
@@ -290,7 +291,7 @@ body,
 }
 
 .search-res-container .search-result:hover {
-  background-color: #2c3440;
+  background-color: #575d67;
   /* Slightly lighter on hover */
 }
 
