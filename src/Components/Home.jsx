@@ -70,7 +70,9 @@ const Home = () => {
       <h1>Home</h1>
 
       <div className="scores-list">
-        {/* <Doughnut data={leetcodeDataChart} /> */}
+        <div className="doughnut-container">
+          {<Doughnut data={leetcodeDataChart} />}
+        </div>
         <div>
           <span>
             Codechef Rating:
