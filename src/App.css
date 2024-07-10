@@ -185,6 +185,7 @@ body {
   width: auto;
   max-width: 30px;
   max-height: 30px;
+  margin-left: -10px;
 }
 .header-option:hover,
 .header-option:hover .icon {
