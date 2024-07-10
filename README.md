@@ -68,6 +68,7 @@ Coder Dashboard is a web application designed to help developers keep track of t
 - *Bootstrap*: CSS framework for responsive design
 
   HomePage:
+  <br/>
   ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/40694ba6-dd9d-4097-a6c9-6c156ab2f394)
 
   <br/>
