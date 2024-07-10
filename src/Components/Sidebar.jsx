@@ -47,21 +47,21 @@ function Sidebar() {
           <div className="userDetailsContent user-name">
             {user.name} | @{user.username}
           </div>
-          <div className="userDetailsContent user-bio">Bio: {user.bio}</div>
+          <div className="userDetailsContent user-bio"><b>Bio: </b> <br />{user.bio}</div>
           <div className="userDetailsContent user-email">
-            Email: {user.email}
+            <b>Email: </b> {user.email}
           </div>
           <div className="userDetailsContent user-country">
-            Country: {user.country}
+            <b>Country: </b> {user.country}
           </div>
           <div className="userDetailsContent user-organization">
-            Organization: {user.organization}
+            <b>Organization:</b> {user.organization}
           </div>
           {user.linkedin && (
             <div className="userDetailsContent">
               <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
                 {linkedin}
-                LinkedIn
+                <b>LinkedIn</b>
               </a>
             </div>
           )}

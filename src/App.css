@@ -77,10 +77,10 @@ body,
   flex-direction: column;
   gap: 10px;
   padding: 15px;
-  background-color: #a1cdff;
+  background-color: #70a9eb;
   border-radius: 50px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  opacity: 0.75; /* Reduced opacity for user details */
+  opacity: 0.8; /* Reduced opacity for user details */
 }
 
 .user-name {
