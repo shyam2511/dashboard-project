@@ -66,3 +66,23 @@ Coder Dashboard is a web application designed to help developers keep track of t
 - *Axios*: Promise-based HTTP client for the browser and Node.js
 - *Chart.js*: JavaScript library for creating charts
 - *Bootstrap*: CSS framework for responsive design
+
+  HomePage:
+  ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/40694ba6-dd9d-4097-a6c9-6c156ab2f394)
+
+  SignIn:
+  ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/74e2b259-abc6-41c2-a119-c9835a2da095)
+
+  SignUp:
+  ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/ad7943e4-eb08-4b93-8f67-3732d3609538)
+
+  Forgot Password:
+  ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/81fe5467-0256-4966-ae0b-cd9d5702140e)
+
+  Dashboard:
+  ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/0b947936-437e-47d8-aa6c-121b4562ac9f)
+
+  Update Profile:
+  ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/1139fd3c-f3ff-4887-8535-5d18d94d5d8c)
+
+
