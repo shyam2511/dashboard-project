@@ -8,7 +8,6 @@ import { FaEyeSlash } from "react-icons/fa6";
 import "../Pages.css"; // Import the SignUp CSS
 import { register } from "../redux/authSlice";
 import { useDispatch } from "react-redux";
-import { BiBorderRadius } from "react-icons/bi";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,8 +16,10 @@ const SignUp = () => {
   const [photo, setPhoto] = useState("");
   const [displayedImages, setDisplayedImages] = useState([]);
   const [avatarUrl, setAvatarUrl] = useState("");
+  const [usernameError, setUsernameError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchAvatarUrl = async () => {
       try {
@@ -45,8 +46,28 @@ const SignUp = () => {
     setPhoto(e.target.files);
   };
 
+  const checkUsername = async (username) => {
+    try {
+      const response = await axios.post(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/auth/check-username`,
+        {
+          username,
+        }
+      );
+      return response.data.exists;
+    } catch (error) {
+      console.error("Error checking username:", error);
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const usernameExists = await checkUsername(state.username);
+    if (usernameExists) {
+      setUsernameError("Username already exists");
+      return;
+    }
     try {
       let filenames = null;
       if (photo) {
@@ -85,31 +106,32 @@ const SignUp = () => {
         {error && <p className="error">{error}</p>}
         <div>
           <label>Email address</label>
-          <input type="email" name="email" onChange={handleState} />
+          <input type="email" name="email" onChange={handleState} required />
         </div>
         <div>
           <label>Name</label>
-          <input type="text" name="name" onChange={handleState} />
+          <input type="text" name="name" onChange={handleState} required />
+        </div>
+        <div>
+          <label>Username</label>
+          <input type="text" name="username" onChange={handleState} required />
+          {usernameError && <p className="error">{usernameError}</p>}
         </div>
         <div>
           <label>Upload Photo</label>
           <input type="file" id="photo" onChange={onChangeHandler} />
           {displayedImages.length > 0 ? (
-            <div>
-              <img
-                className="icon-pp-signup"
-                src={displayedImages[0].url}
-                alt="Selected"
-                onClick={() => document.getElementById("photo").click()}
-              />
-            </div>
+            <img
+              src={displayedImages[0].url}
+              alt="Selected"
+              onClick={() => document.getElementById("photo").click()}
+            />
           ) : (
             <label htmlFor="photo" className="cursor-pointer">
               <img src={avatarUrl} alt="Avatar" />
             </label>
           )}
         </div>
-        <br></br>
         <div>
           <label>Password</label>
           <div className="password-toggle">
@@ -117,6 +139,7 @@ const SignUp = () => {
               type={showPassword ? "text" : "password"}
               name="password"
               onChange={handleState}
+              required
             />
             <button
               type="button"
