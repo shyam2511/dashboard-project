@@ -4,33 +4,8 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { imageDb } from "../firebase/Firebase";
 import axios from "axios";
 
-function SidebarSearched({ userId }) {
+function SidebarSearched({ user }) {
   const [profileImgSrc, setProfileImgSrc] = useState("");
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const getUserDetails = async () => {
-      try {
-        console.log(userId);
-        const response = await axios.get(
-          `https://coders-dashboard-4cdb4394fb85.herokuapp.com/auth/user/${userId}`,
-          options
-        );
-        setUser(response.data);
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-
-    getUserDetails();
-  }, [userId]);
-
   useEffect(() => {
     const getProfileImg = async () => {
       if (user && user.profileImg) {

@@ -6,37 +6,12 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 // Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-const HomeSearched = ({ userId }) => {
-  const [user, setUser] = useState(null);
+const HomeSearched = ({ user }) => {
   const [leetcodeData, setLeetcodeData] = useState({});
   const [codechefData, setCodechefData] = useState({});
   const [codeforcesData, setCodeforcesData] = useState({});
-
   useEffect(() => {
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const getUserDetails = async () => {
-      try {
-        const response = await axios.get(
-          `https://coders-dashboard-4cdb4394fb85.herokuapp.com/auth/user/${userId}`,
-          options
-        );
-        setUser(response.data);
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-
-    getUserDetails();
-  }, [userId]);
-
-  useEffect(() => {
-    console.log(user.platforms.codeforces)
-    if (user && user.platforms.leetcode) {
+    if (user.platforms.leetcode) {
       fetchLeetcode(user.platforms.leetcode);
     }
     if (user && user.platforms.codechef) {
@@ -49,7 +24,7 @@ const HomeSearched = ({ userId }) => {
   const fetchLeetcode = async(platform)=>{
     try {
       const response = await axios.get(
-        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/leetcode/fetch-details?username=${platform.leetcode}`
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/leetcode/fetch-details?username=${platform}`
       );
       if (response.data) {
         setLeetcodeData(response.data.leetcode);
@@ -62,8 +37,9 @@ const HomeSearched = ({ userId }) => {
   const fetchCodechef = async (platform) => {
     try {
       const response = await axios.get(
-        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codechef/fetch-details?username=${platform.codechef}`
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codechef/fetch-details?username=${platform}`
       );
+      
       if (response.data) {
         setCodechefData(response.data.codechef);
       }
@@ -74,7 +50,7 @@ const HomeSearched = ({ userId }) => {
   const fetchCodeforces = async (platform) => {
     try {
       const response = await axios.get(
-        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codeforces/fetch-details?username=${platform.codeforces}`
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codeforces/fetch-details?username=${platform}`
       );
       if (response.data) {
         setCodeforcesData(response.data.codeforces);
@@ -106,39 +82,31 @@ const HomeSearched = ({ userId }) => {
 
   return (
     <div className="main-content">
-      <h1>{user.name}'s Profile</h1>
-      {(leetcodeData|| codechefData ||
-      codeforcesData) ? (
+      <h1>Profile</h1>
+      {leetcodeData || codechefData || codeforcesData ? (
         <div className="scores-list">
-          <Doughnut data={leetcodeDataChart} />
-          <div>
-            <span>
-              {codechefData ? (
-                <>
-                  <b>Codechef Rating: </b>  {codechefData.currentRating}/
-                  {codechefData.highestRating}
-                </>
-              ) : null}
-            </span>
-            <span>
-              {codechefData ? `Stars: ${codechefData.stars}` : null}
-            </span>
+          <div className="doughnut-container">
+            {<Doughnut data={leetcodeDataChart} />}
           </div>
           <div>
             <span>
-              {codeforcesData ? (
-                <>
-                  <b>Codeforces Rating: </b> {codeforcesData.rating}/
-                  {codeforcesData.maxRating}
-                </>
-              ) : null}
+              <b>Codeforces Rating: </b>
+              {codeforcesData.rating}/{codeforcesData.maxRating}
             </span>
+            <br />
             <span>
-              {codeforcesData ? (
-                <>
-                  <b>Title: </b>{codeforcesData.rank}/{codeforcesData.maxRank}
-                </>
-              ) : null}
+              <b>Title: </b> {codeforcesData.rank}/{codeforcesData.maxRank}
+            </span>
+          </div>
+          <br />
+          <div>
+            <span>
+              <b>Codechef Rating: </b>
+              {codechefData.currentRating}/{codechefData.highestRating}
+            </span>
+            <br />
+            <span>
+              <b>Stars: </b> {codechefData.stars}
             </span>
           </div>
         </div>
