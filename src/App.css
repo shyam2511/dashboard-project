@@ -356,6 +356,14 @@ body,
 .main-content {
   margin-left: 400px; /* Ensure this matches sidebar width */
   width: calc(100% - 400px); /* Adjust width to fill remaining space */
+  color: #ffffff;
+  background-color: #222831;
+}
+
+.scores-list{
+  width: 500px;
+  height: 500px;
+  margin-left: 300px;
 }
 
 .doughnut-container {

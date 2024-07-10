@@ -34,6 +34,8 @@ const Home = () => {
       if (codeforcesResponse.data) {
         setCodeforcesData(codeforcesResponse.data.codeforces);
       }
+      console.log(codechefData);
+      console.log(codeforcesData);
     } catch (error) {
       console.error("Error fetching platform data", error);
     }
@@ -66,8 +68,25 @@ const Home = () => {
   return (
     <div className="main-content">
       <h1>Home</h1>
-      <div className="doughnut-container">
-        <Doughnut data={leetcodeDataChart} />
+
+      <div className="scores-list">
+        {/* <Doughnut data={leetcodeDataChart} /> */}
+        <div>
+          <span>
+            Codechef Rating:
+            {codechefData.currentRating}/{codechefData.highestRating}
+          </span>
+          <span>Stars: {codechefData.stars}</span>
+        </div>
+        <div>
+          <span>
+            Codeforces Rating:
+            {codeforcesData.rating}/{codeforcesData.maxRating}
+          </span>
+          <span>
+            Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+          </span>
+        </div>
       </div>
     </div>
   );
