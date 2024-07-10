@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/authSlice';
 import { imageDb } from '../firebase/Firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
+
 function Header({ OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState("");
