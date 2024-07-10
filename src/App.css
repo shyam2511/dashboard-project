@@ -309,10 +309,6 @@ html, body, .container {
   border-color: #007bff; /* Change border color on focus */
 }
 
-search-bar{
-
-}
-
 .homepageContainer {
   background-color: #e5f1d5;
   padding: 100px;
@@ -359,4 +355,6 @@ search-bar{
 .main-content {
   margin-left: 400px; /* Ensure this matches sidebar width */
   width: calc(100% - 400px); /* Adjust width to fill remaining space */
+  color: #ffffff;
+  background-color: #222831;
 }
