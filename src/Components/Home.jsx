@@ -70,25 +70,33 @@ const Home = () => {
       <h1>Home</h1>
 
       <div className="scores-list">
-        <div className="doughnut-container">
+        <div className="doughnut-container colbox">
           {<Doughnut data={leetcodeDataChart} />}
         </div>
-        <div>
-          <span>
-            Codechef Rating:
-            {codechefData.currentRating}/{codechefData.highestRating}
-          </span>
-          <span>Stars: {codechefData.stars}</span>
-        </div>
-        <div>
-          <span>
-            Codeforces Rating:
-            {codeforcesData.rating}/{codeforcesData.maxRating}
-          </span>
-          <span>
-            Title: {codeforcesData.rank}/{codeforcesData.maxRank}
-          </span>
-        </div>
+        {codechefData.currentRating ? (
+          <div className="colbox">
+            <span>
+              Codechef Rating:
+              {codechefData.currentRating}/{codechefData.highestRating}
+            </span>
+            <span>Stars: {codechefData.stars}</span>
+          </div>
+        ) : (
+          <></>
+        )}
+        {codeforcesData.rating ? (
+          <div className="colbox">
+            <span>
+              Codeforces Rating:
+              {codeforcesData.rating}/{codeforcesData.maxRating}
+            </span>
+            <span>
+              Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+            </span>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
