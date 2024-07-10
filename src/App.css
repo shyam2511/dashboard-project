@@ -358,3 +358,9 @@ html, body, .container {
   color: #ffffff;
   background-color: #222831;
 }
+
+.scores-list{
+  width: 500px;
+  height: 500px;
+  margin-left: 300px;
+}
