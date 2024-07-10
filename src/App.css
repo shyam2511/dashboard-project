@@ -69,7 +69,7 @@ body {
   flex-direction: column;
   gap: 10px;
   padding: 15px;
-  background-color: #e5f1d5;
+  background-color: #a1cdff;
   border-radius: 50px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   opacity: 0.75; /* Reduced opacity for user details */
@@ -141,7 +141,7 @@ body {
 
 /* Header styles */
 .header {
-  background-color: #4caf50;
+  background-color: #007bff;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -312,4 +312,14 @@ body {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.icon-pp-signup {
+  border-color: #0a0a0a;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 100%;
+  height: auto;
+  width: auto;
+  max-width: 30px;
+  max-height: 30px;
 }

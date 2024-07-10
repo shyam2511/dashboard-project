@@ -5,9 +5,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
-import '../Pages.css'; // Import the SignUp CSS
-import {register} from "../redux/authSlice"
-import {useDispatch} from "react-redux";
+import "../Pages.css"; // Import the SignUp CSS
+import { register } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
+import { BiBorderRadius } from "react-icons/bi";
+
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [state, setState] = useState({});
@@ -93,11 +95,14 @@ const SignUp = () => {
           <label>Upload Photo</label>
           <input type="file" id="photo" onChange={onChangeHandler} />
           {displayedImages.length > 0 ? (
-            <img
-              src={displayedImages[0].url}
-              alt="Selected"
-              onClick={() => document.getElementById("photo").click()}
-            />
+            <div>
+              <img
+                className="icon-pp-signup"
+                src={displayedImages[0].url}
+                alt="Selected"
+                onClick={() => document.getElementById("photo").click()}
+              />
+            </div>
           ) : (
             <label htmlFor="photo" className="cursor-pointer">
               <img src={avatarUrl} alt="Avatar" />
