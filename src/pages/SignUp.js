@@ -6,6 +6,8 @@ import axios from "axios";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
 import "../Pages.css"; // Importing the CSS file
+import { useDispatch } from "react-redux";
+import { register } from "../redux/authSlice";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,7 +17,7 @@ const SignUp = () => {
   const [displayedImages, setDisplayedImages] = useState([]);
   const [avatarUrl, setAvatarUrl] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchAvatarUrl = async () => {
       try {
@@ -66,6 +68,7 @@ const SignUp = () => {
           profileImg: filenames,
         }
       );
+      dispatch(register(responseData));
       navigate("/signin");
     } catch (error) {
       setError(error.message);
