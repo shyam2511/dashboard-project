@@ -47,21 +47,20 @@ const Profile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfileData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handlePlatformChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData((prevState) => ({
-      ...prevState,
-      platforms: {
-        ...prevState.platforms,
+    if (["leetcode", "codeforces", "codechef"].includes(name)) {
+      setProfileData((prevState) => ({
+        ...prevState,
+        platforms: {
+          ...prevState.platforms,
+          [name]: value,
+        },
+      }));
+    } else {
+      setProfileData((prevState) => ({
+        ...prevState,
         [name]: value,
-      },
-    }));
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -129,7 +128,7 @@ const Profile = () => {
             type="text"
             name="leetcode"
             value={profileData.platforms.leetcode}
-            onChange={handlePlatformChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -138,7 +137,7 @@ const Profile = () => {
             type="text"
             name="codeforces"
             value={profileData.platforms.codeforces}
-            onChange={handlePlatformChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -147,7 +146,7 @@ const Profile = () => {
             type="text"
             name="codechef"
             value={profileData.platforms.codechef}
-            onChange={handlePlatformChange}
+            onChange={handleChange}
           />
         </div>
         <button type="submit">Update Profile</button>
