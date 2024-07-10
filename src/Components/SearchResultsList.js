@@ -1,11 +1,11 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 
-const SearchResultsList = ({ results }) => {
+const SearchResultsList = ({ results, setResults }) => {
   return (
     <div className="searchResultsList">
       {results.map((result, id) => {
-        return <SearchResult result={result} key={id} />;
+        return <SearchResult result={result} key={id} setResults={setResults} />;
       })}
     </div>
   );

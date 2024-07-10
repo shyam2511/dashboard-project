@@ -49,7 +49,7 @@ function Header({ OpenSidebar }) {
         <SearchBar setResults={setResults} />
         {results.length > 0 && (
           <div className="search-res-container">
-            <SearchResultsList results={results} />
+            <SearchResultsList results={results} setResults={setResults}/>
           </div>
         )}
         <div className="header-option">
