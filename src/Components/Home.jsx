@@ -52,7 +52,7 @@ const Home = () => {
         </ul>
       </div>
       <div className="bar-chart-wrapper" style={{ width: '80%', margin: '0 auto' }}>
-        <Bar
+        {/* <Bar
           data={chartData}
           options={{
             scales: {
@@ -63,7 +63,7 @@ const Home = () => {
               }],
             },
           }}
-        />
+        /> */}
       </div>
       <div style={{ marginBottom: '20px' }}></div> {/* Adjust margin as needed */}
     </div>

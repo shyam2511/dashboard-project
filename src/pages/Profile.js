@@ -75,6 +75,7 @@ const Profile = () => {
         }
       );
       dispatch(updateUser(response.data));
+      navigate("/dashboard");
       setMessage("Profile updated successfully");
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -149,7 +150,7 @@ const Profile = () => {
             onChange={handlePlatformChange}
           />
         </div>
-        <button type="submit" onClick={()=>{navigate("/dashboard")}}>Update Profile</button>
+        <button type="submit">Update Profile</button>
         {message && <p className="message">{message}</p>}
       </form>
     </div>
