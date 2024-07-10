@@ -20,7 +20,7 @@ const SignUp = () => {
   useEffect(() => {
     const fetchAvatarUrl = async () => {
       try {
-        const url = await getDownloadURL(ref(imageDb, "images/avatar.png"));
+        const url = await getDownloadURL(ref(imageDb, "images/avatar.jpg"));
         setAvatarUrl(url);
       } catch (error) {
         console.error("Error fetching avatar URL: ", error);
