@@ -12,6 +12,11 @@ body {
   color: #fff; /* Setting text color to white for better contrast */
 }
 
+html, body, .container {
+  height: 100%;
+  background-color: #1d1d1d; /* Ensure the entire background is black */
+}
+
 .container {
   display: flex;
   min-height: 100vh;
@@ -112,7 +117,8 @@ body {
 
 /* Main content area */
 .main-content {
-  margin-left: 250px; /* Adjust based on sidebar width */
+  margin-left: 400px; /* Ensure this matches sidebar width */
+  width: calc(100% - 400px); /* Adjust width to fill remaining space */
   padding: 20px;
 }
 
@@ -141,6 +147,7 @@ body {
 }
 
 /* Header styles */
+/* Header styles */
 .header {
   background-color: #007bff;
   padding: 10px 20px;
@@ -168,13 +175,13 @@ body {
 }
 
 .header-option span {
-  /* margin-left: 5px; */
   margin-right: 40px;
 }
 
 .header-option:last-child {
   margin-left: 20px;
 }
+
 .icon-pp {
   border-color: #0a0a0a;
   border-style: solid;
@@ -186,6 +193,7 @@ body {
   max-height: 30px;
   margin-left: -10px;
 }
+
 .header-option:hover,
 .header-option:hover .icon {
   color: #222831; /* Body background color */
@@ -230,7 +238,21 @@ body {
   text-decoration: underline;
 }
 
-/*Footer*/
+/* Add this new rule for the hover state of the "Home" button */
+.header-options .home-button {
+  margin-left: 50px; /* Add margin to the left of the search bar */
+  cursor: pointer;
+  padding: 10px 20px; /* Optional: Add padding for better click area */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+  transition: background-color 0.3s ease; /* Optional: Add transition for smooth hover effect */
+}
+
+.header-options .home-button:hover {
+  color: #222831; /*rgb(14, 14, 14) to your desired hover background color */
+}
+
+
+/* Footer */
 
 .footer {
   background-color: #0b0c0e;
@@ -287,9 +309,12 @@ body {
   border-color: #007bff; /* Change border color on focus */
 }
 
+search-bar{
+
+}
+
 .homepageContainer {
   background-color: #e5f1d5;
-
   padding: 100px;
   border-radius: 5%;
   width: fit-content;
@@ -298,15 +323,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .homepage-btn-container {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
+
 .homepage-button {
   margin: 10px;
   padding: 15px;
 }
+
 .center {
   margin: 0;
   position: absolute;
@@ -315,6 +343,7 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 .icon-pp-signup {
   border-color: #0a0a0a;
   border-style: solid;
@@ -330,20 +359,4 @@ body {
 .main-content {
   margin-left: 400px; /* Ensure this matches sidebar width */
   width: calc(100% - 400px); /* Adjust width to fill remaining space */
-}
-
-.search-res-container {
-  position: absolute;
-  top: calc(10% + 10px); /* Adjust as needed */
-  background-color: #1a235a;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  z-index: 1000; /* Ensure dropdown appears above other content */
-  display: flex;
-}
-.search-res {
-  position: relative;
-  contain: flex;
-  flex-direction: column;
-  padding: 5px;
 }

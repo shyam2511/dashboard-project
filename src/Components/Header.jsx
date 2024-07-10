@@ -16,6 +16,7 @@ function Header({ OpenSidebar }) {
   const { user } = useSelector((state) => state.auth);
   const [profileImgSrc, setProfileImgSrc] = useState("");
   const [results, setResults] = useState([]);
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
@@ -40,6 +41,7 @@ function Header({ OpenSidebar }) {
       </div>
       <div className="header-options">
         <span
+          className="home-button" // Add this class
           onClick={() => {
             navigate("/dashboard");
           }}
@@ -49,7 +51,7 @@ function Header({ OpenSidebar }) {
         <SearchBar setResults={setResults} />
         {results.length > 0 && (
           <div className="search-res-container">
-            <SearchResultsList results={results} setResults={setResults}/>
+            <SearchResultsList results={results} setResults={setResults} />
           </div>
         )}
         <div className="header-option">
@@ -58,28 +60,20 @@ function Header({ OpenSidebar }) {
         </div>
         <div className="header-option profile-icon">
           <div onClick={toggleProfileOptions}>
-            <img className="icon-pp" src={profileImgSrc} />
+            <img className="icon-pp" src={profileImgSrc} alt="Profile" />
           </div>
 
           <div
             className={`profile-dropdown ${showProfileOptions ? "active" : ""}`}
           >
             <ul>
-              <li
-                onClick={() => {
-                  navigate("/profile");
-                }}
-              >
+              <li onClick={() => navigate("/profile")}>
                 <a href="#">Profile</a>
               </li>
               <li>
                 <a href="#">Settings</a>
               </li>
-              <li
-                onClick={() => {
-                  handleLogout();
-                }}
-              >
+              <li onClick={handleLogout}>
                 <a href="#">Logout</a>
               </li>
             </ul>
