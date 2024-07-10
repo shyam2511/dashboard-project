@@ -1,73 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import { Bar } from 'react-chartjs-2';
+import React, { useState, useEffect } from "react";
+import { Doughnut } from "react-chartjs-2";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
+
+// Register Chart.js components
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 const Home = () => {
-  // Sample initial state for scores
-  const [scores, setScores] = useState([
-    { website: 'Leetcode', score: 1487 },
-    { website: 'Codeforces', score: 1500 },
-    { website: 'HackerRank', score: 1794 },
-  ]);
+  const user = useSelector((state) => state.auth.user);
+  const platforms = user.platforms || {};
+  const [leetcodeData, setLeetcodeData] = useState([]);
+  const [codechefData, setCodechefDataData] = useState([]);
+  const [codeforcesData, setCodeforcesData] = useState([]);
 
-  // You can fetch data from an API or adjust the scores as needed
+  const fetchPlatformData = async () => {
+    try {
+      const codechefResponse = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codechef/fetch-details?username=${platforms.codechef}`
+      );
+      const codeforcesResponse = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codeforces/fetch-details?username=${platforms.codeforces}`
+      );
+      const leetcodeResponse = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/leetcode/fetch-details?username=${platforms.leetcode}`
+      );
+      if (codechefResponse.data) {
+        setCodechefDataData(codechefResponse.data.codechef);
+      }
+      if (leetcodeResponse.data) {
+        setLeetcodeData(leetcodeResponse.data.leetcode);
+      }
+      if (codeforcesResponse.data) {
+        setCodeforcesData(codeforcesResponse.data.codeforces);
+      }
+    } catch (error) {
+      console.error("Error fetching platform data", error);
+    }
+  };
+
   useEffect(() => {
-    // Example of fetching scores from an API
-    // Replace with your actual fetch logic
-    // fetchScores()
-    //   .then(data => setScores(data))
-    //   .catch(error => console.error('Error fetching scores:', error));
-  }, []);
+    fetchPlatformData();
+  }, [platforms]);
 
-  const chartData = {
-    labels: scores.map(item => item.website),
-    datasets: [{
-      label: 'Scores',
-      data: scores.map(item => item.score),
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-      ],
-      borderWidth: 1,
-      barThickness: 25, // Adjust the thickness of the bars
-    }],
+  const leetcodeDataChart = {
+    labels: ["Easy", "Medium", "Hard"],
+    datasets: [
+      {
+        label: "Leetcode questions solved",
+        data: [
+          leetcodeData.easySolved || 0,
+          leetcodeData.mediumSolved || 0,
+          leetcodeData.hardSolved || 0,
+        ],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(54, 162, 235)",
+          "rgb(255, 205, 86)",
+        ],
+        hoverOffset: 4,
+      },
+    ],
   };
 
   return (
     <div className="main-content">
       <h1>Home</h1>
       <div className="scores-list">
-        <h2>Scores from Different Websites</h2>
-        <ul>
-          {scores.map((item, index) => (
-            <li key={index}>
-              <strong>{item.website}:</strong> {item.score}
-            </li>
-          ))}
-        </ul>
+        <Doughnut data={leetcodeDataChart} />
       </div>
-      <div className="bar-chart-wrapper" style={{ width: '80%', margin: '0 auto' }}>
-        {/* <Bar
-          data={chartData}
-          options={{
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true,
-                },
-              }],
-            },
-          }}
-        /> */}
-      </div>
-      <div style={{ marginBottom: '20px' }}></div> {/* Adjust margin as needed */}
     </div>
   );
-}
+};
 
 export default Home;
