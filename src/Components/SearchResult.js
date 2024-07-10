@@ -5,7 +5,7 @@ const SearchResult = ({ result,setResults }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="search-res"
+      className="search-result"
       onClick={() => {
         setResults([]);
         navigate(`/search/${result._id}`);

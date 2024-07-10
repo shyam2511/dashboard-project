@@ -14,7 +14,6 @@ function SearchBar({setResults}) {
       )
       .then((response) => {
         value && setResults(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         setResults([]);
