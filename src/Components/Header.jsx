@@ -15,7 +15,7 @@ function Header({ OpenSidebar }) {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [profileImgSrc, setProfileImgSrc] = useState("");
-  const [results,setResults] = useState([]);
+  const [results, setResults] = useState([]);
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
@@ -39,9 +39,19 @@ function Header({ OpenSidebar }) {
         <BsJustify className="icon" onClick={OpenSidebar} />
       </div>
       <div className="header-options">
-        <span onClick={()=>{navigate("/dashboard")}}>Home</span>
-        <SearchBar setResults={setResults}/>
-        {results.length>0 && <SearchResultsList results={results}/>}
+        <span
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          Home
+        </span>
+        <SearchBar setResults={setResults} />
+        {results.length > 0 && (
+          <div className="search-res-container">
+            <SearchResultsList results={results} setResults={setResults}/>
+          </div>
+        )}
         <div className="header-option">
           <BsInfoCircle className="icon" />
           <span>Contact Us</span>
