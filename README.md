@@ -70,7 +70,7 @@ Coder Dashboard is a web application designed to help developers keep track of t
   HomePage:
   ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/40694ba6-dd9d-4097-a6c9-6c156ab2f394)
 
-  
+  <br/>
 
   SignIn:
   ![image](https://github.com/shyam2511/dashboard-project/assets/79778864/74e2b259-abc6-41c2-a119-c9835a2da095)
