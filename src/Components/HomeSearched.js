@@ -1,41 +1,86 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 
-const HomeSearched = ({userId}) => {
-  // Sample initial state for scores
-  const [scores, setScores] = useState([
-    { website: "Leetcode", score: 1487 },
-    { website: "Codeforces", score: 1500 },
-    { website: "HackerRank", score: 1794 },
-  ]);
+// Register Chart.js components
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-  // You can fetch data from an API or adjust the scores as needed
+const HomeSearched = ({ userId }) => {
+  const [user, setUser] = useState(null);
+  const [leetcodeData, setLeetcodeData] = useState([]);
+  const [codechefData, setCodechefData] = useState([]);
+  const [codeforcesData, setCodeforcesData] = useState([]);
   useEffect(() => {
-    // Example of fetching scores from an API
-    // Replace with your actual fetch logic
-    // fetchScores()
-    //   .then(data => setScores(data))
-    //   .catch(error => console.error('Error fetching scores:', error));
-  }, []);
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  const chartData = {
-    labels: scores.map((item) => item.website),
+    const getUserDetails = async () => {
+      try {
+        const response = await axios.get(
+          `https://coders-dashboard-4cdb4394fb85.herokuapp.com/auth/user/${userId}`,
+          options
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+    getUserDetails();
+  }, [userId]);
+
+  useEffect(() => {
+    if (user && user.platforms) {
+      fetchPlatformData(user.platforms);
+    }
+  }, [user]);
+
+  const fetchPlatformData = async (platforms) => {
+    try {
+      const codechefResponse = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codechef/fetch-details?username=${platforms.codechef}`
+      );
+      const codeforcesResponse = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/codeforces/fetch-details?username=${platforms.codeforces}`
+      );
+      const leetcodeResponse = await axios.get(
+        `https://coders-dashboard-4cdb4394fb85.herokuapp.com/leetcode/fetch-details?username=${platforms.leetcode}`
+      );
+
+      if (codechefResponse.data) {
+        setCodechefData(codechefResponse.data.codechef);
+      }
+      if (leetcodeResponse.data) {
+        setLeetcodeData(leetcodeResponse.data.leetcode);
+      }
+      if (codeforcesResponse.data) {
+        setCodeforcesData(codeforcesResponse.data.codeforces);
+      }
+    } catch (error) {
+      console.error("Error fetching platform data", error);
+    }
+  };
+
+  const leetcodeDataChart = {
+    labels: ["Easy", "Medium", "Hard"],
     datasets: [
       {
-        label: "Scores",
-        data: scores.map((item) => item.score),
+        label: "Leetcode questions solved",
+        data: [
+          leetcodeData.easySolved || 0,
+          leetcodeData.mediumSolved || 0,
+          leetcodeData.hardSolved || 0,
+        ],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
+          "rgb(255, 99, 132)",
+          "rgb(54, 162, 235)",
+          "rgb(255, 205, 86)",
         ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-        ],
-        borderWidth: 1,
-        barThickness: 25, // Adjust the thickness of the bars
+        hoverOffset: 4,
       },
     ],
   };
@@ -44,34 +89,36 @@ const HomeSearched = ({userId}) => {
     <div className="main-content">
       <h1>Home</h1>
       <div className="scores-list">
-        <h2>Scores from Different Websites</h2>
-        <ul>
-          {scores.map((item, index) => (
-            <li key={index}>
-              <strong>{item.website}:</strong> {item.score}
-            </li>
-          ))}
-        </ul>
+        {/* <Doughnut data={leetcodeDataChart} /> */}
+        <div>
+          <span>
+            {codechefData.currentRating ? (
+              <>
+                Codechef Rating: {codechefData.currentRating}/
+                {codechefData.highestRating}
+              </>
+            ) : null}
+          </span>
+          <span>{codechefData.stars ? `Stars: ${codechefData.stars}` : null}</span>
+        </div>
+        <div>
+          <span>
+            {codeforcesData.rating ? (
+              <>
+                Codeforces Rating: {codeforcesData.rating}/
+                {codeforcesData.maxRating}
+              </>
+            ) : null}
+          </span>
+          <span>
+            {codeforcesData.rank ? (
+              <>
+                Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+              </>
+            ) : null}
+          </span>
+        </div>
       </div>
-      <div
-        className="bar-chart-wrapper"
-        style={{ width: "80%", margin: "0 auto" }}
-      >
-        {/* <Bar
-          data={chartData}
-          options={{
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true,
-                },
-              }],
-            },
-          }}
-        /> */}
-      </div>
-      <div style={{ marginBottom: "20px" }}></div>{" "}
-      {/* Adjust margin as needed */}
     </div>
   );
 };
