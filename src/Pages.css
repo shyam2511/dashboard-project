@@ -255,3 +255,8 @@ body {
 .signup-form .links a:hover {
   text-decoration: underline;
 }
+
+img{
+  width: 100px;
+  margin-left: 120px;
+}
