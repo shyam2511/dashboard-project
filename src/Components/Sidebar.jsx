@@ -28,7 +28,7 @@ function Sidebar() {
     <aside id="sidebar" className='sidebar-responsive' >
       <div className='sidebar-title'>
         <div className='sidebar-brand'>
-          CODER DASHBOARD
+          CODER'S DASHBOARD
         </div>
       </div>
       <div className="user-info">

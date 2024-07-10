@@ -5,9 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
-import "../Pages.css"; // Importing the CSS file
-import { useDispatch } from "react-redux";
-import { register } from "../redux/authSlice";
+import '../Pages.css'; // Import the SignUp CSS
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +15,7 @@ const SignUp = () => {
   const [displayedImages, setDisplayedImages] = useState([]);
   const [avatarUrl, setAvatarUrl] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchAvatarUrl = async () => {
       try {
@@ -49,6 +47,7 @@ const SignUp = () => {
     try {
       let filenames = null;
       if (photo) {
+        console.log(photo[0]);
         if (photo[0].type !== "image/jpeg") {
           setError("Only .jpg profile pictures are allowed.");
           return;
@@ -72,14 +71,15 @@ const SignUp = () => {
       navigate("/signin");
     } catch (error) {
       setError(error.message);
+      console.error(error);
     }
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit}>
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleSubmit}>
         <h3>Sign Up</h3>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p className="error">{error}</p>}
         <div>
           <label>Email address</label>
           <input type="email" name="email" onChange={handleState} />
@@ -95,18 +95,17 @@ const SignUp = () => {
             <img
               src={displayedImages[0].url}
               alt="Selected"
-              className="profile-image"
               onClick={() => document.getElementById("photo").click()}
             />
           ) : (
             <label htmlFor="photo" className="cursor-pointer">
-              <img src={avatarUrl} alt="Avatar" className="profile-image" />
+              <img src={avatarUrl} alt="Avatar" />
             </label>
           )}
         </div>
         <div>
           <label>Password</label>
-          <div className="password-container">
+          <div className="password-toggle">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
@@ -122,7 +121,7 @@ const SignUp = () => {
             </button>
           </div>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Signup</button>
         <div className="links">
           <p>
             <Link to="/signin">Already a user? Login</Link>

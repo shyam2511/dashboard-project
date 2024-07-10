@@ -3,13 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa6";
 import axios from "axios";
-import "../Pages.css";  // Importing the CSS file
-import { useDispatch } from "react-redux";
-import { login } from "../redux/authSlice";
+import '../Pages.css'; // Import the SignIn CSS
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -38,49 +36,47 @@ const SignIn = () => {
   };
 
   return (
-      <div className="container">
+    <div className="signin-container">
+      <form className="signin-form" onSubmit={handleLogin}>
+        <h3>Sign In</h3>
+        {errorMessage && <p className="error">{errorMessage}</p>}
         <div>
-          <form onSubmit={handleLogin}>
-            <h3>Sign In</h3>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <div>
-              <label>Email address</label>
-              <input
-                type="email"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Password</label>
-              <div className="password-container">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowPassword((prevState) => !prevState);
-                  }}
-                >
-                  {showPassword ? <AiFillEye /> : <FaEyeSlash />}
-                </button>
-              </div>
-            </div>
-            <button type="submit">Sign In</button>
-            <div className="links">
-              <p>
-                <Link to="/signup">Sign Up</Link>
-              </p>
-              <p>
-                <Link to="/forgotpassword">Forgot Password?</Link>
-              </p>
-            </div>
-          </form>
+          <label>Email address</label>
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-      </div>
+        <div>
+          <label>Password</label>
+          <div className="password-toggle">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setShowPassword((prevState) => !prevState);
+              }}
+            >
+              {showPassword ? <AiFillEye /> : <FaEyeSlash />}
+            </button>
+          </div>
+        </div>
+        <button type="submit">Sign In</button>
+        <div className="links">
+          <p>
+            <Link to="/signup">Sign Up</Link>
+          </p>
+          <p>
+            <Link to="/forgotpassword">Forgot Password?</Link>
+          </p>
+        </div>
+      </form>
+    </div>
   );
 };
 

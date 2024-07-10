@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
-  BsFillBellFill,
-  BsFillEnvelopeFill,
   BsPersonCircle,
   BsSearch,
   BsJustify,
-  BsPeople,
   BsInfoCircle,
+
 } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +13,7 @@ import { imageDb } from '../firebase/Firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
 function Header({ OpenSidebar }) {
   const [isSearching, setIsSearching] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [showProfileOptions, setShowProfileOptions] = useState(false);
   const searchFormRef = useRef(null); // Reference for the search form
   const dispatch = useDispatch();
@@ -37,7 +35,7 @@ function Header({ OpenSidebar }) {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchText);
+    console.log("Searching for:", searchText);
   };
 
   const toggleProfileOptions = () => {
@@ -47,15 +45,18 @@ function Header({ OpenSidebar }) {
   // Close search bar when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchFormRef.current && !searchFormRef.current.contains(event.target)) {
+      if (
+        searchFormRef.current &&
+        !searchFormRef.current.contains(event.target)
+      ) {
         setIsSearching(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [searchFormRef]);
   console.log(user);
@@ -97,21 +98,25 @@ function Header({ OpenSidebar }) {
           <span>Contact Us</span>
         </div>
         <div className="header-option profile-icon">
+
           <img
             className="icon"
             src={profileImgSrc}
             onClick={toggleProfileOptions}
           />
+
           {/* Profile Dropdown */}
           <div
             className={`profile-dropdown ${showProfileOptions ? "active" : ""}`}
           >
             <ul>
+
               <li
                 onClick={() => {
                   navigate("/profile");
                 }}
               >
+
                 <a href="#">Profile</a>
               </li>
               <li>

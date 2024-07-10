@@ -8,7 +8,7 @@
 /* Global styles */
 body {
   font-family: Helvetica, Sans-Serif;
-  background-color: #222831;
+  background-color: #1d1d1d;
   color: #fff; /* Setting text color to white for better contrast */
 }
 
@@ -19,7 +19,7 @@ body {
 
 /* Sidebar styles */
 #sidebar {
-  background-color: #31363F;
+  background-color: #0a0a0a;
   width: 400px;
   padding: 20px;
   position: fixed;
@@ -45,7 +45,7 @@ body {
 .sidebar-brand {
   font-size: 20px;
   font-weight: bold;
-  color: #e0e0e0;
+  color: #e5f1d5;
 }
 
 .user-info {
@@ -67,9 +67,9 @@ body {
 .user-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;  
+  gap: 10px;
   padding: 15px;
-  background-color: #EEEEEE;
+  background-color: #e5f1d5;
   border-radius: 50px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   opacity: 0.75; /* Reduced opacity for user details */
@@ -141,7 +141,7 @@ body {
 
 /* Header styles */
 .header {
-  background-color: #76ABAE;
+  background-color: #4caf50;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -252,7 +252,6 @@ body {
 }
 
 .footer-content p {
-  
   color: rgba(201, 233, 255, 0.562);
 }
 
@@ -275,4 +274,33 @@ body {
 .search-form input[type="text"]:focus {
   width: 250px; /* Expand width on focus */
   border-color: #007bff; /* Change border color on focus */
+}
+
+.homepageContainer {
+  background-color: #e5f1d5;
+
+  padding: 100px;
+  border-radius: 5%;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.homepage-btn-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.homepage-button {
+  margin: 10px;
+  padding: 15px;
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

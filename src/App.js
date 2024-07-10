@@ -22,12 +22,13 @@ function App() {
             <Route path="/dashboard" element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
+
             <Route path="/profile" element={<Profile/>}/>
+
           </Routes>
         </BrowserRouter>
       </PersistGate>
     </Provider>
-
   );
 }
 

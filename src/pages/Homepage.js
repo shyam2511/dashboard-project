@@ -1,12 +1,13 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../Pages.css";
 
 const Homepage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
-    <div>
-      <h1>Coders Dashboard</h1>
-      <div>
+    <div className="homepage-container">
+      <h1>Coder's Dashboard</h1>
+      <div className="homepage-buttons">
         <button
           onClick={() => {
             navigate("/signin");
@@ -24,6 +25,6 @@ const Homepage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Homepage
+export default Homepage;
