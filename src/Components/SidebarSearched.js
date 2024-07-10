@@ -36,15 +36,15 @@ function SidebarSearched({ user }) {
             <div className="userDetailsContent user-name">
               {user.name} | @{user.username}
             </div>
-            <div className="userDetailsContent user-bio">Bio: {user.bio}</div>
+            <div className="userDetailsContent user-bio"><b>Bio: </b> {user.bio}</div>
             <div className="userDetailsContent user-email">
-              Email: {user.email}
+             <b>Email: </b>  {user.email}
             </div>
             <div className="userDetailsContent user-country">
-              Country: {user.country}
+              <b>Country: </b> {user.country}
             </div>
             <div className="userDetailsContent user-organization">
-              Organization: {user.organization}
+              <b>Organization: </b> {user.organization}
             </div>
           </div>
         </div>
