@@ -362,8 +362,12 @@ body,
 
 .scores-list {
   container: flex;
+  flex-direction: row;
 }
 
 .doughnut-container {
   width: 500px;
+  margin-left: 450px;
 }
+
+

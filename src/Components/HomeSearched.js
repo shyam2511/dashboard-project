@@ -115,7 +115,7 @@ const HomeSearched = ({ userId }) => {
             <span>
               {codechefData ? (
                 <>
-                  Codechef Rating: {codechefData.currentRating}/
+                  <b>Codechef Rating: </b>  {codechefData.currentRating}/
                   {codechefData.highestRating}
                 </>
               ) : null}
@@ -128,7 +128,7 @@ const HomeSearched = ({ userId }) => {
             <span>
               {codeforcesData ? (
                 <>
-                  Codeforces Rating: {codeforcesData.rating}/
+                  <b>Codeforces Rating: </b> {codeforcesData.rating}/
                   {codeforcesData.maxRating}
                 </>
               ) : null}
@@ -136,7 +136,7 @@ const HomeSearched = ({ userId }) => {
             <span>
               {codeforcesData ? (
                 <>
-                  Title: {codeforcesData.rank}/{codeforcesData.maxRank}
+                  <b>Title: </b>{codeforcesData.rank}/{codeforcesData.maxRank}
                 </>
               ) : null}
             </span>
